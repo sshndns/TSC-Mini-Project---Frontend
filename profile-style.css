@@ -1,0 +1,171 @@
+/* CUSTOM FONTS */
+@font-face {
+    font-family: 'DreamerTM';
+    src: url('resources/DreamerTM-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AlteHaasGrotesk';
+    src: url('resources/AlteHaasGroteskRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AlteHaasGroteskBold';
+    src: url('resources/AlteHaasGroteskBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* GLOBAL STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'AlteHaasGrotesk', sans-serif;
+    color: #111111;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAVIGATION BAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background-color: #122236;
+}
+
+.logo a {
+    font-family: 'DreamerTM', sans-serif;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.8rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    opacity: 0.7;
+}
+
+/* PROFILE MAIN SECTION */
+.profile-container {
+    flex: 1; /* Pushes footer to bottom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 8%;
+    background-color: #ffffff;
+}
+
+.profile-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3.5rem;
+    max-width: 950px;
+    width: 100%;
+}
+
+/* Image Box */
+.profile-image-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 360px;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Details Box */
+.profile-details {
+    flex: 1.2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Name - Dreamer TM */
+.profile-name {
+    font-family: 'DreamerTM', sans-serif;
+    font-size: 2.8rem;
+    color: #111111;
+    margin-bottom: 0.4rem;
+    line-height: 1.1;
+}
+
+/* NIM - Alte Haas Grotesk Bold */
+.profile-nim {
+    font-family: 'AlteHaasGroteskBold', sans-serif;
+    font-size: 1.15rem;
+    color: #666666;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+/* Bio Text - Alte Haas Grotesk */
+.profile-bio {
+    font-family: 'AlteHaasGrotesk', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333333;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    text-align-last: left;
+}
+
+/* Email Hyperlink */
+.ext-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #0b2210;
+    font-weight: bold;
+    font-size: 1.05rem;
+    align-self: flex-start;
+}
+
+.ext-link:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #122236;
+    color: #fffdfd;
+    font-size: 0.95rem;
+}

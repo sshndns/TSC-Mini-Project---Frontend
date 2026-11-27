@@ -35,6 +35,7 @@ html, body {
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* NAVIGATION BAR */
@@ -58,6 +59,7 @@ html, body {
 
 .nav-links {
     display: flex;
+    align-items: center;
     list-style: none;
     gap: 1.8rem;
 }
@@ -73,14 +75,44 @@ html, body {
     opacity: 0.7;
 }
 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.theme-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #91a3b6;
+    color: #111111;
+    border: none;
+    border-radius: 50%;
+    font-family: inherit;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.theme-btn:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}
+
 /* PROFILE MAIN SECTION */
 .profile-container {
-    flex: 1; /* Pushes footer to bottom */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 3rem 8%;
-    background-color: #ffffff;
 }
 
 .profile-card {
@@ -93,10 +125,9 @@ html, body {
     width: 100%;
 }
 
-/* Image Box */
 .profile-image-box {
     flex: 1;
-    min-width: 280px;
+    min-width: 260px;
     max-width: 360px;
 }
 
@@ -109,25 +140,23 @@ html, body {
     display: block;
 }
 
-/* Details Box */
 .profile-details {
     flex: 1.2;
-    min-width: 300px;
+    min-width: 280px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* Name - Dreamer TM */
 .profile-name {
     font-family: 'DreamerTM', sans-serif;
     font-size: 2.8rem;
     color: #111111;
     margin-bottom: 0.4rem;
     line-height: 1.1;
+    letter-spacing: 2px;
 }
 
-/* NIM - Alte Haas Grotesk Bold */
 .profile-nim {
     font-family: 'AlteHaasGroteskBold', sans-serif;
     font-size: 1.15rem;
@@ -136,7 +165,6 @@ html, body {
     letter-spacing: 0.5px;
 }
 
-/* Bio Text - Alte Haas Grotesk */
 .profile-bio {
     font-family: 'AlteHaasGrotesk', sans-serif;
     font-size: 1rem;
@@ -147,7 +175,6 @@ html, body {
     text-align-last: left;
 }
 
-/* Email Hyperlink */
 .ext-link {
     display: inline-block;
     text-decoration: none;
@@ -161,6 +188,28 @@ html, body {
     text-decoration: underline;
 }
 
+/* DARK MODE STYLES */
+body.dark-mode {
+    background-color: #0d1622;
+    color: #f1f5f9;
+}
+
+body.dark-mode .profile-name {
+    color: #ffffff;
+}
+
+body.dark-mode .profile-nim {
+    color: #91a3b6;
+}
+
+body.dark-mode .profile-bio {
+    color: #cbd5e1;
+}
+
+body.dark-mode .ext-link {
+    color: #91a3b6;
+}
+
 /* FOOTER */
 footer {
     text-align: center;
@@ -168,4 +217,28 @@ footer {
     background-color: #122236;
     color: #fffdfd;
     font-size: 0.95rem;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 650px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #122236;
+        padding: 1.2rem 5%;
+        gap: 1rem;
+        border-top: 1px solid #243b55;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
 }

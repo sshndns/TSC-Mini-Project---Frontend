@@ -37,6 +37,7 @@ html {
 body {
     width: 100%;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Headings Font Styling */
@@ -64,6 +65,7 @@ h1, h2, .logo a {
 
 .nav-links {
     display: flex;
+    align-items: center;
     list-style: none;
     gap: 1.8rem;
 }
@@ -79,11 +81,42 @@ h1, h2, .logo a {
     opacity: 0.7;
 }
 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fffdfd;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.theme-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #91a3b6;
+    color: #111111;
+    border: none;
+    border-radius: 50%;
+    font-family: inherit;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.theme-btn:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}
+
 /* HERO SECTION */
 .hero-section {
     position: relative;
     width: 100%;
-    height: calc(100vh - 70px); /* Fill screen minus navbar height */
+    height: calc(100vh - 70px);
     overflow: hidden;
 }
 
@@ -120,15 +153,14 @@ h1, h2, .logo a {
     justify-content: center;
     align-items: center;
     background-color: #f8f9fa;
-    min-height: calc(100vh - 70px); /* Fill screen minus navbar height */
+    min-height: calc(100vh - 70px);
 }
 
 .video-container {
     position: relative;
     width: 100%;
     max-width: 780px;
-    padding-bottom: 438px; /* 16:9 Aspect Ratio */
-    height: 0;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
@@ -155,12 +187,13 @@ h1, h2, .logo a {
 
 .about-content {
     flex: 1;
-    min-width: 320px;
+    min-width: 280px;
 }
 
 .about-content h2 {
     font-size: 4rem;
     margin-bottom: 1.5rem;
+    letter-spacing: 2px;
 }
 
 .about-content p {
@@ -186,7 +219,7 @@ h1, h2, .logo a {
 
 .about-image {
     flex: 1;
-    min-width: 300px;
+    min-width: 280px;
     text-align: center;
 }
 
@@ -205,6 +238,7 @@ h1, h2, .logo a {
 .scroll-section h2 {
     font-size: 4rem;
     margin-bottom: 2rem;
+    letter-spacing: 2px;
 }
 
 .scroll-container {
@@ -230,7 +264,7 @@ h1, h2, .logo a {
     border-radius: 4px;
 }
 
-/* 4 Cards per View */
+/* 4 Cards per View on Desktop */
 .scroll-container .card {
     flex: 0 0 calc(25% - 1.15rem);
     scroll-snap-align: start;
@@ -272,7 +306,7 @@ h1, h2, .logo a {
     color: #666666;
 }
 
-/* DISCOGRAPHY TABLE */
+/* DISCOGRAPHY TABLE & FILTER BUTTONS */
 .discography-section {
     padding: 5rem 10%;
     text-align: center;
@@ -281,7 +315,35 @@ h1, h2, .logo a {
 
 .discography-section h2 {
     font-size: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.8rem;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 1px solid #122236;
+    background-color: #ffffff;
+    color: #122236;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: #122236;
+    color: #ffffff;
 }
 
 .album-table {
@@ -309,7 +371,7 @@ h1, h2, .logo a {
 .form-section {
     padding: 5rem 10%;
     background-color: #ffffff;
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
     text-align: center;
 }
@@ -317,6 +379,7 @@ h1, h2, .logo a {
 .form-section h2 {
     font-size: 4rem;
     margin-bottom: 2rem;
+    letter-spacing: 2px;
 }
 
 .fan-form {
@@ -345,6 +408,12 @@ h1, h2, .logo a {
     font-size: 1rem;
 }
 
+.form-feedback {
+    font-size: 0.95rem;
+    font-weight: bold;
+    min-height: 1.2rem;
+}
+
 .btn-submit {
     padding: 14px;
     background-color: #91a3b6;
@@ -361,6 +430,87 @@ h1, h2, .logo a {
     opacity: 0.85;
 }
 
+.message-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.message-card {
+    padding: 1rem 1.2rem;
+    border-left: 4px solid #122236;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.message-card-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #122236;
+    margin-bottom: 0.4rem;
+}
+
+/* DARK MODE STYLES */
+body.dark-mode {
+    background-color: #0d1622;
+    color: #f1f5f9;
+}
+
+body.dark-mode .video-section,
+body.dark-mode .discography-section {
+    background-color: #132030;
+}
+
+body.dark-mode .about-section,
+body.dark-mode .form-section {
+    background-color: #0d1622;
+}
+
+body.dark-mode .about-content p,
+body.dark-mode .scroll-container .card p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .ext-link {
+    color: #91a3b6;
+}
+
+body.dark-mode .scroll-container .card,
+body.dark-mode .album-table,
+body.dark-mode .message-card {
+    background-color: #1a2a3e;
+    border-color: #2d425e;
+    color: #f1f5f9;
+}
+
+body.dark-mode .album-table th {
+    background-color: #253b56;
+    color: #ffffff;
+}
+
+body.dark-mode .album-table td {
+    border-color: #2d425e;
+}
+
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background-color: #1a2a3e;
+    color: #f1f5f9;
+    border-color: #2d425e;
+}
+
+body.dark-mode .message-card {
+    border-left-color: #91a3b6;
+}
+
+body.dark-mode .message-card-header {
+    color: #91a3b6;
+}
+
 /* FOOTER */
 footer {
     text-align: center;
@@ -368,4 +518,58 @@ footer {
     background-color: #122236;
     color: #fffdfd;
     font-size: 0.95rem;
+}
+
+/* RESPONSIVE MEDIA QUERIES (TABLET & MOBILE) */
+@media (max-width: 900px) {
+    .scroll-container .card {
+        flex: 0 0 calc(50% - 0.75rem); /* 2 cards per view on tablet */
+    }
+
+    .hero-title {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #122236;
+        padding: 1.2rem 5%;
+        gap: 1rem;
+        border-top: 1px solid #243b55;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .about-content h2,
+    .scroll-section h2,
+    .discography-section h2,
+    .form-section h2 {
+        font-size: 2.8rem;
+    }
+
+    .scroll-container .card {
+        flex: 0 0 85%; /* 1 card peek on mobile */
+    }
+
+    .album-table th, .album-table td {
+        padding: 10px 6px;
+        font-size: 0.9rem;
+    }
 }
